@@ -32,10 +32,11 @@
 
         var grad= ctx.createLinearGradient(0,0,canvas.width,0);
         grad.addColorStop(0.00, '#8a42f5'); 
-        grad.addColorStop(0.25, 'white'); 
-        grad.addColorStop(0.5, '#9e42f5'); 
-        grad.addColorStop(0.75, 'white') 
+        grad.addColorStop(0.2, 'white'); 
+        grad.addColorStop(0.4, '#9e42f5'); 
+        grad.addColorStop(0.6, 'white') 
         grad.addColorStop(1, 'purple');
+        grad.addColorStop(0.8, 'white');
 
         ctx.arc(x, y, 70, 0, 2 * Math.PI);
         ctx.strokeStyle = grad;
