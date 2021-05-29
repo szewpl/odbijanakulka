@@ -14,7 +14,6 @@
     var ctx = canvas.getContext("2d");
     var c =0,x1,y1;
     var radius = 70+15;
-    var color1 = "#" + ('00000'+(Math.random()*(1<<24)|0).toString(16)).slice(-6);
     var color2 = "#" + ('00000'+(Math.random()*(1<<24)|0).toString(16)).slice(-6);
     var x = parseInt(Math.random() * ((canvas.width-radius) - radius+1)+radius),y =parseInt(Math.random() * ((canvas.height-radius) - radius+1)+radius);
 
@@ -22,20 +21,19 @@
         ctx.strokeStyle = "black";
         ctx.lineWidth = 5;
         ctx.strokeRect(0,0,canvas.width,canvas.height);
-        var innerRadius = 0,
-        outerRadius = 250;
+        var innerRadius = 8,
+        outerRadius = 65;
 
         var gradient = ctx.createRadialGradient(x, y, innerRadius, x, y, outerRadius);
-        gradient.addColorStop(1, color1);
-        gradient.addColorStop(0.5,"white");
+        gradient.addColorStop(1, "white");
         gradient.addColorStop(0, color2);
 
         var grad= ctx.createLinearGradient(0,0,canvas.width,0);
         grad.addColorStop(0.00, '#8a42f5'); 
         grad.addColorStop(0.2, 'white'); 
-        grad.addColorStop(0.4, '#9e42f5'); 
+        grad.addColorStop(0.4, '#8a42f5'); 
         grad.addColorStop(0.6, 'white') 
-        grad.addColorStop(0.8, 'purple');
+        grad.addColorStop(0.8, '#8a42f5');
         grad.addColorStop(1, 'white');
 
         ctx.arc(x, y, 70, 0, 2 * Math.PI);
@@ -64,9 +62,11 @@
         
         if (x+radius > canvas.width || x -radius < 0){
             x1=-x1;
+            color2 = "#" + ('00000'+(Math.random()*(1<<24)|0).toString(16)).slice(-6);
         }
         if (y+radius > canvas.height || y -radius < 0){
             y1=-y1;
+            color2 = "#" + ('00000'+(Math.random()*(1<<24)|0).toString(16)).slice(-6);
         }
         
         x+= x1;
