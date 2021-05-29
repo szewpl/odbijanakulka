@@ -12,22 +12,25 @@
 <script>
     var canvas = document.querySelector("#canvas");
     var ctx = canvas.getContext("2d");
-    var czas;
     var c =0,x1,y1;
-    var x = parseInt(Math.random() * ((canvas.width-30) - 30+1)+30),y =parseInt(Math.random() * ((canvas.height-30) - 30+1)+30);
+    var radius = 70;
+    var r = radius+15;
+    var color1 = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+    var color2 = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+    var color3 = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+    var x = parseInt(Math.random() * ((canvas.width-radius) - radius+1)+radius),y =parseInt(Math.random() * ((canvas.height-radius) - radius+1)+radius);
 
     function kolo(x,y){
         ctx.strokeStyle = "black";
         ctx.lineWidth = 5;
         ctx.strokeRect(0,0,canvas.width,canvas.height);
         var innerRadius = 0,
-        outerRadius = 100,
-        radius = 30;
+        outerRadius = 100;
 
         var gradient = ctx.createRadialGradient(x, y, innerRadius, x, y, outerRadius);
-        gradient.addColorStop(1, '#e81f4b');
-        gradient.addColorStop(0.5,'#cc428e');
-        gradient.addColorStop(0, '#a67efb');
+        gradient.addColorStop(1, color1);
+        gradient.addColorStop(0.5,"white");
+        gradient.addColorStop(0, color3);
 
         var grad= ctx.createLinearGradient(0,0,canvas.width,0);
         grad.addColorStop(0.00, '#8a42f5'); 
@@ -38,7 +41,7 @@
 
         ctx.arc(x, y, radius, 0, 2 * Math.PI);
         ctx.strokeStyle = grad;
-        ctx.lineWidth = 8;
+        ctx.lineWidth = 25;
         ctx.stroke();
         ctx.fillStyle = gradient;
         ctx.fill();
@@ -60,10 +63,10 @@
         }
         
         
-        if (x+30 > canvas.width || x -30 < 0){
+        if (x+r > canvas.width || x -r < 0){
             x1=-x1;
         }
-        if (y+30 > canvas.height || y -30 < 0){
+        if (y+r > canvas.height || y -r < 0){
             y1=-y1;
         }
         
